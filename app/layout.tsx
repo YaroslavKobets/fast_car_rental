@@ -8,6 +8,11 @@ const nunito = Nunito({ subsets: ['latin'] })
 export const metadata: Metadata = {
 	title: 'Fast Car Rental',
 	description: 'Find, book, or rent a car - quickly and easily!',
+	viewport: {
+		initialScale: 1,
+		maximumScale: 1,
+		userScalable: false,
+	},
 }
 
 export default function RootLayout({

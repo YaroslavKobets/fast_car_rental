@@ -8,6 +8,9 @@
 	box-sizing: border-box;
 	font-family: 'Nunito', sans-serif;
 }
+html {
+	-webkit-text-size-adjust: 100%;
+}
 
 /* START: General styles */
 .max-width {
@@ -185,7 +188,7 @@
 }
 
 .search__input {
-	@apply w-full h-[48px] pl-12 p-4 rounded-lg   outline-none cursor-pointer text-sm shadow-md ring-1 ring-black ring-opacity-5;
+	@apply w-full h-[48px] pl-12 p-3 rounded-lg   outline-none cursor-pointer  shadow-md ring-1 ring-black ring-opacity-5 touch-manipulation text-base;
 }
 .search__actions {
 	@apply grid gap-2;
@@ -207,7 +210,7 @@
 }
 
 .search-manufacturer__input {
-	@apply w-full h-[48px] pl-12 p-4 rounded-lg relative   outline-none cursor-pointer text-sm shadow-md ring-1 ring-black ring-opacity-5;
+	@apply w-full h-[48px] pl-12 p-3 rounded-lg relative   outline-none cursor-pointer text-base shadow-md ring-1 ring-black ring-opacity-5 touch-manipulation;
 }
 
 .search-manufacturer__options {
