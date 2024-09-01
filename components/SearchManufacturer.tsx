@@ -1,14 +1,13 @@
 'use client'
 import {
 	Combobox,
-	Transition,
 	ComboboxInput,
 	ComboboxOption,
 	ComboboxOptions,
 	ComboboxButton,
 } from '@headlessui/react'
 
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { SearchManufacturerProps } from '@/types'
 import { Car } from 'lucide-react'
 import { manufacturers } from '@/constants'
@@ -34,14 +33,16 @@ const SearchManufacturer = ({
 		<div className='search-manufacturer'>
 			<Combobox value={manufacturer} onChange={setManufacturer}>
 				<div className='relative w-full'>
-					<ComboboxButton className='absolute top-[14px]'>
+					<ComboboxButton className='absolute top-[14px] z-[2]'>
 						<Car size={20} className='ml-4' color='#003366' />
 					</ComboboxButton>
 					<ComboboxInput
 						className='search-manufacturer__input relative '
-						placeholder='Toyota'
+						placeholder='Manufacturer'
 						displayValue={(manufacturer: string) => manufacturer}
-						onChange={e => setQuery(e.target.value)}
+						onChange={e => {
+							setQuery(e.target.value)
+						}}
 					/>
 
 					<ComboboxOptions

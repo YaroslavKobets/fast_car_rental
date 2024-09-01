@@ -1,7 +1,7 @@
-import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from '@/components'
-import { fuels, yearsOfProduction } from '@/constants'
-import { HomeProps } from '@/types'
+import { CarCard, Hero, Profile, ShowMore } from '@/components'
 import { fetchCars } from '@/utils'
+import SearchBlock from '@/components/SearchBlock'
+import { HomeProps } from '@/types'
 
 export default async function Home({ searchParams }: HomeProps) {
 	const allCars = await fetchCars({
@@ -23,18 +23,16 @@ export default async function Home({ searchParams }: HomeProps) {
 					<h1 className='text-4xl font-extrabold'>Car Catalogue</h1>
 					<p>Explore the cars you might like</p>
 				</div>
-				<div className='home__filters'>
-					<SearchBar />
-					<div className='home__filter-container'>
-						<CustomFilter title='fuel' options={fuels} />
-						<CustomFilter title='year' options={yearsOfProduction} />
-					</div>
+				<div className='grid md:grid-cols-2 grid-cols-1 items-start gap-8 mt-8'>
+					<SearchBlock />
+					<Profile />
 				</div>
+
 				{!isDataEmpty ? (
 					<section>
 						<div className='home__cars-wrapper'>
 							{allCars.map(car => (
-								<CarCard car={car} />
+								<CarCard key={car.id} car={car} />
 							))}
 						</div>
 						<ShowMore

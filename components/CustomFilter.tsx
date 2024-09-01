@@ -24,7 +24,7 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
 	}
 
 	return (
-		<div className='w-fit'>
+		<div className='w-full'>
 			<Listbox
 				value={selected}
 				onChange={e => {
@@ -32,7 +32,7 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
 					handleUpdateParams(e)
 				}}
 			>
-				<div className='relative w-fit z-10'>
+				<div className='relative w-full z-10'>
 					<ListboxButton className='custom-filter__btn'>
 						<span className='block truncate'>{selected.title}</span>
 						<ChevronsUpDown className='ml-4' size={20} />
