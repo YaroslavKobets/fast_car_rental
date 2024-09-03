@@ -11,10 +11,14 @@ import {
 import clsx from 'clsx'
 import { ChevronsUpDown } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React from 'react'
 
-const CustomFilter = ({ title, options }: CustomFilterProps) => {
-	const [selected, setSelected] = useState(options[0])
+const CustomFilter = ({
+	title,
+	options,
+	selectedOption,
+	setSelectedOption,
+}: CustomFilterProps) => {
 	const router = useRouter()
 
 	const handleUpdateParams = (e: { title: string; value: string }) => {
@@ -26,15 +30,15 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
 	return (
 		<div className='w-full'>
 			<Listbox
-				value={selected}
+				value={selectedOption}
 				onChange={e => {
-					setSelected(e)
+					setSelectedOption(e)
 					handleUpdateParams(e)
 				}}
 			>
 				<div className='relative w-full z-10'>
 					<ListboxButton className='custom-filter__btn'>
-						<span className='block truncate'>{selected.title}</span>
+						<span className='block truncate'>{selectedOption.title}</span>
 						<ChevronsUpDown className='ml-4' size={20} />
 					</ListboxButton>
 					<ListboxOptions

@@ -6,11 +6,16 @@ import CustomFilter from '@/components/CustomFilter'
 import CustomButton from '@/components/CustomButton'
 import { fuels, yearsOfProduction } from '@/constants'
 import { useState } from 'react'
+import { OptionProps } from '@/types'
 
 const SearchBlock = () => {
 	const router = useRouter()
 	const [manufacturer, setManufacturer] = useState('')
 	const [model, setModel] = useState('')
+	const [selectedFuel, setSelectedFuel] = useState<OptionProps>(fuels[0])
+	const [selectedYear, setSelectedYear] = useState<OptionProps>(
+		yearsOfProduction[0]
+	)
 
 	const handleClear = () => {
 		const searchParams = new URLSearchParams(window.location.search)
@@ -18,6 +23,13 @@ const SearchBlock = () => {
 		searchParams.delete('manufacturer')
 		searchParams.delete('fuel')
 		searchParams.delete('year')
+
+		// Очищення стану інпутів та фільтрів
+		setManufacturer('')
+		setModel('')
+		setSelectedFuel(fuels[0])
+		setSelectedYear(yearsOfProduction[0])
+
 		const newPathName = `${window.location.pathname}?${searchParams.toString()}`
 		router.push(newPathName, { scroll: false })
 	}
@@ -61,8 +73,18 @@ const SearchBlock = () => {
 			/>
 			<div className='search__actions'>
 				<div className='search__filters'>
-					<CustomFilter title='fuel' options={fuels} />
-					<CustomFilter title='year' options={yearsOfProduction} />
+					<CustomFilter
+						title='fuel'
+						options={fuels}
+						selectedOption={selectedFuel}
+						setSelectedOption={setSelectedFuel}
+					/>
+					<CustomFilter
+						title='year'
+						options={yearsOfProduction}
+						selectedOption={selectedYear}
+						setSelectedOption={setSelectedYear}
+					/>
 				</div>
 
 				<div className='search__buttons'>

@@ -37,6 +37,7 @@ export interface FilterProps {
 	limit?: number
 	model?: string
 }
+
 export interface HomeProps {
 	searchParams: FilterProps
 }
@@ -49,6 +50,8 @@ export interface OptionProps {
 export interface CustomFilterProps {
 	title: string
 	options: OptionProps[]
+	selectedOption: OptionProps
+	setSelectedOption: (option: OptionProps) => void
 }
 
 export interface ShowMoreProps {
